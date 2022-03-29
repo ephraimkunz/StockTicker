@@ -107,13 +107,13 @@ void ticker_update_prices() {
           update_price_setting_needs_draw(&ticker_prices[i], market_price);
         }
       } else {
-        Serial.print("Error on HTTP request: ");
+        Serial.print("Non 200 response to HTTP request: ");
         Serial.println(request);
         ticker_has_previous_error = true;
         update_price_setting_needs_draw(&ticker_prices[i], std::nullopt);
       }
     } else {
-      Serial.print("Error Code: ");
+      Serial.print("Error in HTTP request: ");
       Serial.println(httpResponseCode);
       ticker_has_previous_error = true;
       update_price_setting_needs_draw(&ticker_prices[i], std::nullopt);

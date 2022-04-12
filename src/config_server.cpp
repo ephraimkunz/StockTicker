@@ -18,7 +18,7 @@ static const char INDEX[] =
     "<form action=\"/get\">Ticker Symbol(s): "
     "<input type=\"text\" name=\"input1\"><input type=\"submit\" "
     "value=\"Submit\"></form><br><a "
-    "href=\"https://github.com/Patrick-E-Rankin/"
+    "href=\"https://github.com/ephraimkunz/StockTicker"
     "ESP32StockTicker\">ESP8266StockTicker</a></body></html>";
 
 void config_server_init() {

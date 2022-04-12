@@ -41,7 +41,8 @@ void config_server_init() {
       const char separator[2] = "|";
 
       char *token = strtok(tickerSymbolString, separator);
-      while (token && config_num_ticker_symbols_to_fetch < MAX_NUM_TICKER_PRICES) {
+      while (token &&
+             config_num_ticker_symbols_to_fetch < MAX_NUM_TICKER_PRICES) {
         // Strip leading spaces.
         while (isspace(*token)) {
           token++;
@@ -53,8 +54,8 @@ void config_server_init() {
             token[i] = '\0';
           }
 
-          config_ticker_symbols_to_fetch[config_num_ticker_symbols_to_fetch][i] =
-              toupper(token[i]);
+          config_ticker_symbols_to_fetch[config_num_ticker_symbols_to_fetch]
+                                        [i] = toupper(token[i]);
 
           if (token[i] == '\0') {
             break;

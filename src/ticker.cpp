@@ -1,5 +1,5 @@
-#include <ticker.h>
 #include <config_server.h>
+#include <ticker.h>
 
 #include <ArduinoJson.h>
 #include <ESP8266HTTPClient.h>
@@ -48,7 +48,7 @@ void ticker_init() {
 }
 
 static void update_price_setting_needs_draw(TickerPrice *ticker,
-                                     std::optional<float> new_price) {
+                                            std::optional<float> new_price) {
   if (ticker->price != new_price) {
     ticker->price = new_price;
     ticker->needs_draw = true;

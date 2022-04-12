@@ -1,6 +1,7 @@
 #include <ESP8266WiFi.h>
-#include <screen.h>
 #include <config_server.h>
+#include <screen.h>
+#include <scripture.h>
 #include <ticker.h>
 
 // Setup wifi
@@ -22,6 +23,7 @@ void setup() {
   wifi_init();
   config_server_init();
   ticker_init();
+  scripture_init();
 
   screen_write_splash_screen();
 }
@@ -29,11 +31,13 @@ void setup() {
 void loop() {
   if ((WiFi.status() == WL_CONNECTED) &&
       (config_server_changed_configuration ||
-       ((ticker_last_fetch_ms + ticker_fetch_interval_ms(ticker_has_previous_error)) <= millis()))) {
+       ((ticker_last_fetch_ms +
+         ticker_fetch_interval_ms(ticker_has_previous_error)) <= millis()))) {
     config_server_changed_configuration = false;
     ticker_update_prices();
+    scripture_update();
     screen_clamp_current_screen();
-    screen_write_stock_screen_if_needed();
+    screen_update_if_needed();
     ticker_last_fetch_ms = millis();
   }
 

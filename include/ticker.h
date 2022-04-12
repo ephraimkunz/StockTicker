@@ -5,8 +5,8 @@
 
 #include <constants.h>
 
-// Represents a symbol, possible price (if there were no errors fetching), and whether the screen displaying
-// this symbol needs to be updated.
+// Represents a symbol, possible price (if there were no errors fetching), and
+// whether the screen displaying this symbol needs to be updated.
 struct TickerPrice {
   char symbol[MAX_SYMBOL_LENGTH];
   std::optional<float> price;
@@ -16,7 +16,8 @@ struct TickerPrice {
 // Number of active ticker prices in ticker_prices
 extern int ticker_prices_size;
 
-// Array of ticker prices. The number of active items in this array is ticker_prices_size.
+// Array of ticker prices. The number of active items in this array is
+// ticker_prices_size.
 extern TickerPrice ticker_prices[MAX_NUM_TICKER_PRICES];
 
 // Whether or not the last fetch of active ticker items resulted in an error.

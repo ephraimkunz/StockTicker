@@ -10,15 +10,18 @@
 // by other code once the new config is read.
 extern bool config_server_changed_configuration;
 
-// The number of active symbols in config_ticker_symbols_to_fetch.
-extern int config_num_ticker_symbols_to_fetch;
+int config_num_ticker_symbols();
 
-// Symbols the user has specified should be displayed. The number of active
-// items in this array is config_num_ticker_symbols_to_fetch.
-extern char config_ticker_symbols_to_fetch[MAX_NUM_TICKER_PRICES]
-                                          [MAX_SYMBOL_LENGTH];
+// Returns the symbol at index the user has specified should be displayed. 
+// The number of active items in this array can be determined by calling
+// config_num_ticker_symbols().
+char *config_ticker_symbol_at_index(int index);
 
 // Initialize the config server, to be called once in setup().
 void config_server_init();
+
+// Init the default ticker symbols to be fetched immediately. Should be called
+// after config_server_init, one time in setup.
+void config_init_default_ticker_symbols();
 
 #endif // CONFIG_SERVER_H
